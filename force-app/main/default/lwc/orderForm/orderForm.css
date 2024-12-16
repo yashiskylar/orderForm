@@ -1,0 +1,13 @@
+.label-text {
+    margin-top: 1rem;
+    color: black;
+}
+
+.asterisk {
+    color: red;
+    font-weight: bold;
+}
+
+.label-text strong {
+    font-weight: bold;
+}

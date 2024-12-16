@@ -1,0 +1,49 @@
+<template>
+    <div class="upload-section">
+        <h2>Prescription</h2>
+        <lightning-file-upload
+            name="prescription"
+            multiple
+            accept=".pdf,.jpg,.jpeg,.png"
+            record-id={recordId}
+            onuploadfinished={handleUploadPrescriptionFiles}>
+        </lightning-file-upload>
+        <template if:true={prescriptionFiles}>
+            <ul>
+                <template for:each={prescriptionFiles} for:item="fileName">
+
+                    <li key={fileName} class="slds-grid slds-m-top_medium slds-col slds-size_1-of-2">
+                        <lightning-icon icon-name="doctype:image" class="slds-size_1-of-12" alternative-text="Image file" title="Image"></lightning-icon>
+                        <p class="slds-size_1-of-2">{fileName}</p>
+                        <lightning-button-icon icon-name="utility:delete" data-name={fileName} onclick={handlePrescriptionDeleteFile}  class="delete-btn slds-m-left_xx-small slds-size_1-of-16"></lightning-button-icon>
+                    </li>
+                </template>
+            </ul>
+        </template>
+    </div>
+    <hr />
+
+    <div class="upload-section">
+        <h2>Discount Document</h2>
+        <lightning-file-upload
+            name="discountDocument"
+            multiple
+            accept=".pdf,.jpg,.jpeg,.png"
+            record-id={recordId}
+            onuploadfinished={handleUploadDiscountFiles}>
+        </lightning-file-upload>
+
+        <template if:true={discountFiles}>
+            <ul>
+                <template for:each={discountFiles} for:item="fileName">
+
+                    <li key={fileName} class="slds-grid slds-m-top_medium slds-col slds-size_1-of-2">
+                        <lightning-icon icon-name="doctype:image" class="slds-size_1-of-12" alternative-text="Image file" title="Image"></lightning-icon>
+                        <p class="slds-size_1-of-2">{fileName}</p>
+                        <lightning-button-icon icon-name="utility:delete" data-name={fileName} onclick={handleDiscountDeleteFile}  class="delete-btn slds-m-left_xx-small slds-size_1-of-16"></lightning-button-icon>
+                    </li>
+                </template>
+            </ul>
+        </template>
+    </div>
+</template>
