@@ -1,10 +1,12 @@
 import { LightningElement, track, api } from 'lwc';
+import NoHeader from '@salesforce/resourceUrl/NoHeader';
+import { loadStyle, loadScript } from 'lightning/platformResourceLoader';
 
 export default class ParentCompo extends LightningElement {
 
     @track step = '1';
     @track isButtonDisable = true;
-    @track isNextButtonDisabled = false;
+    @track isNextButtonDisabled = true;
     @track isToShow = false;
 
     currentRecordID;
@@ -18,8 +20,11 @@ export default class ParentCompo extends LightningElement {
 
     ];
 
+    connectedCallback() {
+        loadStyle(this, NoHeader)
+    }
+
     handleProgress(event){
-        
             this.step = (event.target.value).toString();
             this.updateButtonStates();
     }
@@ -48,8 +53,6 @@ export default class ParentCompo extends LightningElement {
     handleRecordID(event) {
         this.isNextButtonDisabled = !(event.detail.showNextButton);
         this.currentRecordID = event.detail.accountId;
-        console.log('cuurentRecordID', this.currentRecordID);
-        
     }
 
     handleFormValidation(event) {
@@ -60,6 +63,11 @@ export default class ParentCompo extends LightningElement {
     updateButtonStates() {
         this.isButtonDisable = this.step === '1';
         this.isNextButtonDisabled = this.step === this.status.length;
+    }
+
+    handleProductValidation(event) {
+        this.isButtonDisable = this.step === '2';
+        this.isNextButtonDisabled =  !(event.detail.productValidation);
     }
 
     get progress() {

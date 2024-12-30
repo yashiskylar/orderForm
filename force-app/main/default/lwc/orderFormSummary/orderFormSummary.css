@@ -8,8 +8,13 @@
     font-family: Arial, sans-serif;
 }
 
-.slds-p-bottom_x-small {
+.slds-p-bottom_x-small,
+.slds-p-top_x-small {
     margin-bottom: 0.5rem;
+}
+
+.slds-p-left-samall {
+    margin-left: 0.5rem;
 }
 
 .slds-m-top_medium {
@@ -80,4 +85,3 @@ button {
     padding: 0;
     text-align: right;
 }
-

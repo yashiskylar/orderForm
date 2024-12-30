@@ -9,14 +9,12 @@ public with sharing class AccountRecordPicker {
             conditions.add('GB_SAP_Account_Number__c LIKE :searchTerm');
             conditions.add('GB_Street_House_No__c LIKE :searchTerm');
             conditions.add('GB_Street_2__c LIKE :searchTerm');
-            
         }
 
         if (!conditions.isEmpty()) {
             query += String.join(conditions, ' OR ');  // OR to match any of the fields
         }
-		system.debug('Query --->' + query);
-		system.debug('Search Term ---->>' + searchTerm);
+
         return Database.query(query);
     }
 }

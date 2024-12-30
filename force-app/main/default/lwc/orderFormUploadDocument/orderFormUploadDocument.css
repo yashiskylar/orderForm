@@ -69,3 +69,11 @@ hr {
     font-weight: bold;
     color: #e60000;
 }
+
+.truncate {
+    display: inline-block;    /* Ensures the text is treated as a block for width control */
+    max-width: 40ch;         /* Limits the text display to 10 characters */
+    overflow: hidden;        /* Hides overflowing content */
+    white-space: nowrap;     /* Prevents wrapping to the next line */
+    text-overflow: ellipsis; /* Displays an ellipsis (...) for overflowed text */
+}
